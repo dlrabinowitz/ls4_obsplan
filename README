@@ -18,6 +18,9 @@ scheduler.
 
 to compile:
 
+NOTE: If using the scheduler to simulate observations, change the value of "FAKE_RUN" from 
+0 to 1 in "scheduler/src/scheduler.h" before compiling
+
 cd src
 make clean
 make
