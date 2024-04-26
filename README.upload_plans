@@ -1,0 +1,30 @@
+upload_plans.csh
+
+A shell to upload obsplans to quest16 at La Silla
+
+instruction to upload one more more obsplans:
+
+1) create one more more new obsplans as usual, named yyyymmdd.obsplan , where yyyy mm dd are the UT year, month , and day of the observing night for the morning after each night.
+
+(2) Erase any existing obsplans at  /group/astro/tno/obsplans/new_plans
+
+(3) copy the your new  obsplan(s) to /group/astro/tno/obsplans/new_plans
+
+***ALSO CHANGE THEIR PERMISSION TO read/write/execute by everyone :
+
+   chmod 777  /group/astro/tno/obsplans/new_plans/*
+****
+
+(4) log in to blade16
+
+(5) change to directory /group/astro/tno/obsplans
+
+(6) execute "upload_plans.csh"
+
+You will  be prompted for the observer password in quest16. The script will run a remote command on quest16 to
+upload the new obsplans. Lots of diagnostic messsages will be printed. Make sure it gives a success message at the
+end. Takes about a second or so to upload each plan.
+
+
+WARNING: You must upload any new plans before the scheduler starts up at La Silla, which is currently 19:00 CLST = 18:00 EDT, otherwise it will not get read by the scheduler.
+

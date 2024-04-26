@@ -1,0 +1,38 @@
+FILTER clear
+0.0        -1.0      N 180.0  100.  1 0 # evening darks
+0.0        -1.0      N 180.0  100.  1 0 # evening darks
+0.0        -1.0      N 180.0  100.  1 0 # evening darks
+0.0        -1.0      N 180.0  100.  1 0 # evening darks
+0.0        -1.0      N 180.0  100.  1 0 # evening darks
+0.0        -1.0      N 60.0  100.  1 0 # evening darks
+0.0        -1.0      N 60.0  100.  1 0 # evening darks
+0.0        -1.0      N 60.0  100.  1 0 # evening darks
+0.0        -1.0      N 60.0  100.  1 0 # evening darks
+0.0        -1.0      N 60.0  100.  1 0 # evening darks
+0.0        -1.0      N 10.0  100.  1 0 # evening darks
+0.0        -1.0      N 10.0  100.  1 0 # evening darks
+0.0        -1.0      N 10.0  100.  1 0 # evening darks
+0.0        -1.0      N 10.0  100.  1 0 # evening darks
+0.0        -1.0      N 10.0  100.  1 0 # evening darks
+0.0         1.0      N 10.0  100.  1 0 # morning darks
+0.0         1.0      N 10.0  100.  1 0 # morning darks
+0.0         1.0      N 10.0  100.  1 0 # morning darks
+0.0         1.0      N 10.0  100.  1 0 # morning darks
+0.0         1.0      N 10.0  100.  1 0 # morning darks
+0.0         1.0      N 60.0  100.  1 0 # morning darks
+0.0         1.0      N 60.0  100.  1 0 # morning darks
+0.0         1.0      N 60.0  100.  1 0 # morning darks
+0.0         1.0      N 60.0  100.  1 0 # morning darks
+0.0         1.0      N 60.0  100.  1 0 # morning darks
+0.0         1.0      N 180.0  100.  1 0 # morning darks
+0.0         1.0      N 180.0  100.  1 0 # morning darks
+0.0         1.0      N 180.0  100.  1 0 # morning darks
+0.0         1.0      N 180.0  100.  1 0 # morning darks
+0.0         1.0      N 180.0  100.  1 0 # morning darks
+0.00000  0.0      E  10.0  10.0  5  0 # evening twilight flats
+0.00000  0.0      E  10.0  10.0  2  0 # evening twilight flats
+0.00000  0.0      E  10.0  10.0  2  0 # evening twilight flats
+0.00000  0.0      M  10.0  10.0  5  0 # morning twilight flats
+0.00000  0.0      M  10.0  10.0  2  0 # morning twilight flats
+0.00000  0.0      M  10.0  10.0  2  0 # morning twilight flats
+0.00000  0.0 F  10.0  60.0  7  0 0.05 28.35 # focus sequence
