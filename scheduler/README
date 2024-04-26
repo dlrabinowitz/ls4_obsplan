@@ -4,5 +4,10 @@ program to read sequence of fields for NEO/TNO/Sne survey
 and efficiently schedule them. Socket commands send to
 telescope controller and neatsrv controller.
 
+To simulate the observations (i.e. in order to validate the
+feasibilty of a given obsplan), recompile scheduler after
+change the value of FAKE_RUN from "0" to "1" in scheduler.h
+
+
 DLR 2007 Mar 5
 
