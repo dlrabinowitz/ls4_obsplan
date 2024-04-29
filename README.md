@@ -21,33 +21,4 @@ any given site at any given time. Program get_fields reads the tesselation
 file and creates the field schedule in the format expected by the LA SIlla
 scheduler.
 
-to compile:
-
-cd src
-make clean
-make
-make install
-cd ../scheduler
-cd src
-make clean
-make
-make install
-cd ../..
-
-to run:
-
-setenv MAKE_PLAN_ROOT to the path where this code was installed
-
-make a directory to store the obsplans.
-change to that directory.
-copy make_plan from the scripts directory into the directory.
-copy or link in the tesselation.dat file from the conf directory.
-create an file of fields to exclude (same format as the obsplans themselves).
-run make_fields filename, where filename is the name of the excludes file.
-
-to test:
-  cd $MAKE_PLAN_ROOT
-  mkdir test
-  cd test
-  ../scripts/test.csh
-
+See README for more info
