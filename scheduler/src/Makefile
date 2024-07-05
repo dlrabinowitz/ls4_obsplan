@@ -84,7 +84,7 @@ clean:
 	rm -f $(PROGRAMS) *.o 
 
 install:
-	cp $(PROGRAMS) ../bin
+	cp $(PROGRAMS) ../../bin
 
 
 
