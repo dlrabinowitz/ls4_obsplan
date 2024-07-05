@@ -47,6 +47,7 @@ to run:
   run make_fields filename, where filename is the name of the excludes file
 
 to test:
+  setenv MAKE_PLAN_ROOT to the path where the code was installed
   cd $MAKE_PLAN_ROOT
   mkdir test
   cd test
