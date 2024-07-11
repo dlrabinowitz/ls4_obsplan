@@ -1,0 +1,537 @@
+rm -f get_fields julian skycalc get_moon_jd get_sne_fields *.o 
+cc  -c get_fields.c
+get_fields.c:20:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   20 | main(int argc, char **argv)
+      | ^~~~
+get_fields.c: In function ‘main’:
+get_fields.c:66:10: warning: implicit declaration of function ‘galact’ [-Wimplicit-function-declaration]
+   66 |          galact(f_ra,f_dec,epoch,&gal_lon,&gal_lat);
+      |          ^~~~~~
+cc  -c galactic.c
+cc  -o get_fields get_fields.o galactic.o -lm -lc
+cc  -c julian.c
+julian.c:14:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   14 | main(int argc, char **argv)
+      | ^~~~
+cc   julian.o   -o julian
+cc  -c skycalc.c
+skycalc.c: In function ‘find_by_name’:
+skycalc.c:5707:17: warning: ‘return’ with no value, in function returning non-void
+ 5707 |                 return;
+      |                 ^~~~~~
+skycalc.c:5689:5: note: declared here
+ 5689 | int find_by_name(ra, dec, epoch, date, use_dst, enter_ut, night_date, stdz,
+      |     ^~~~~~~~~~~~
+skycalc.c: At top level:
+skycalc.c:6182:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ 6182 | main()
+      | ^~~~
+cc  -o skycalc skycalc.o -lm -lc
+cc  -c get_moon_jd.c
+get_moon_jd.c:14:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   14 | main(int argc, char **argv)
+      | ^~~~
+cc  -o get_moon_jd get_moon_jd.o -lm -lc
+cc  -c get_sne_fields.c
+get_sne_fields.c:20:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   20 | main(int argc, char **argv)
+      | ^~~~
+get_sne_fields.c: In function ‘main’:
+get_sne_fields.c:68:10: warning: implicit declaration of function ‘galact’ [-Wimplicit-function-declaration]
+   68 |          galact(f_ra,f_dec,epoch,&gal_lon,&gal_lat);
+      |          ^~~~~~
+cc  -o get_sne_fields get_sne_fields.o galactic.o -lm -lc
+cp get_fields julian skycalc get_moon_jd get_sne_fields ../bin
+rm -f survey_sim make_sequence get_ecliptic galactic get_time_gaps make_sequence1 scheduler  time_stamp sequencer get_airmass make_histogram get_time_history  *.o 
+cc  -c survey_sim.c
+survey_sim.c:192:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  192 | main(int argc, char **argv)
+      | ^~~~
+survey_sim.c: In function ‘adjust_date’:
+survey_sim.c:567:5: warning: implicit declaration of function ‘caldat’ [-Wimplicit-function-declaration]
+  567 |     caldat(jd,date,&dow);
+      |     ^~~~~~
+survey_sim.c: In function ‘init_fields’:
+survey_sim.c:995:9: warning: implicit declaration of function ‘galact’ [-Wimplicit-function-declaration]
+  995 |         galact(f->ra,f->dec,2000.0,&(f->gal_long),&(f->gal_lat));
+      |         ^~~~~~
+survey_sim.c:996:9: warning: implicit declaration of function ‘eclipt’ [-Wimplicit-function-declaration]
+  996 |         eclipt(f->ra,f->dec,2000.0,nt->jd_start,&(f->epoch),&(f->ecl_long),&(f->ecl_lat));
+      |         ^~~~~~
+cc  -c sky_utils.c
+cc  -c ecliptic.c
+ecliptic.c:21:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   21 | ecliptic_to_equator(lon,lat,ra,dec)
+      | ^~~~~~~~~~~~~~~~~~~
+ecliptic.c: In function ‘ecliptic_to_equator’:
+ecliptic.c:56:9: warning: ‘return’ with no value, in function returning non-void
+   56 |         return;
+      |         ^~~~~~
+ecliptic.c:21:1: note: declared here
+   21 | ecliptic_to_equator(lon,lat,ra,dec)
+      | ^~~~~~~~~~~~~~~~~~~
+ecliptic.c: At top level:
+ecliptic.c:59:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   59 | equator_to_ecliptic(ra,dec,lon,lat)
+      | ^~~~~~~~~~~~~~~~~~~
+ecliptic.c: In function ‘equator_to_ecliptic’:
+ecliptic.c:74:9: warning: ‘return’ with no value, in function returning non-void
+   74 |         return;
+      |         ^~~~~~
+ecliptic.c:59:1: note: declared here
+   59 | equator_to_ecliptic(ra,dec,lon,lat)
+      | ^~~~~~~~~~~~~~~~~~~
+cc  -o survey_sim survey_sim.o sky_utils.o ecliptic.o -lm -lc
+cc  -c make_sequence.c
+make_sequence.c:25:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   25 | main(int argc, char **argv)
+      | ^~~~
+make_sequence.c: In function ‘main’:
+make_sequence.c:36:8: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   36 |        exit(-1);
+      |        ^~~~
+make_sequence.c:10:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+    9 | #include <stdio.h>
+  +++ |+#include <stdlib.h>
+   10 | 
+make_sequence.c:36:8: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   36 |        exit(-1);
+      |        ^~~~
+make_sequence.c:36:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence.c:60:7: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   60 |       exit(-1);
+      |       ^~~~
+make_sequence.c:60:7: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence.c:63:25: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   63 |     field_grid=(Field *)malloc(n_grid_points*sizeof(Field));
+      |                         ^~~~~~
+make_sequence.c:63:25: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+make_sequence.c:63:25: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+make_sequence.c:63:25: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+make_sequence.c:66:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   66 |         exit(-1);
+      |         ^~~~
+make_sequence.c:66:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence.c:81:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+   81 |     free(field_grid);
+      |     ^~~~
+make_sequence.c:81:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+make_sequence.c:81:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+make_sequence.c:81:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+make_sequence.c:82:5: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   82 |     exit(0);
+      |     ^~~~
+make_sequence.c:82:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence.c: In function ‘fill_grid’:
+make_sequence.c:105:7: warning: implicit declaration of function ‘equator_to_ecliptic’ [-Wimplicit-function-declaration]
+  105 |       equator_to_ecliptic(ra3*15,0.0,&lon,&lat);
+      |       ^~~~~~~~~~~~~~~~~~~
+make_sequence.c:112:12: warning: implicit declaration of function ‘fabs’ [-Wimplicit-function-declaration]
+  112 |       deca=fabs(dec1-lat);
+      |            ^~~~
+make_sequence.c:10:1: note: include ‘<math.h>’ or provide a declaration of ‘fabs’
+    9 | #include <stdio.h>
+  +++ |+#include <math.h>
+   10 | 
+make_sequence.c:112:12: warning: incompatible implicit declaration of built-in function ‘fabs’ [-Wbuiltin-declaration-mismatch]
+  112 |       deca=fabs(dec1-lat);
+      |            ^~~~
+make_sequence.c:112:12: note: include ‘<math.h>’ or provide a declaration of ‘fabs’
+make_sequence.c:139:33: warning: implicit declaration of function ‘cos’ [-Wimplicit-function-declaration]
+  139 |         grid[i].ra=ra3+RA_STEP0/cos(dec*DEG_TO_RAD);
+      |                                 ^~~
+make_sequence.c:139:33: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+make_sequence.c:139:33: warning: incompatible implicit declaration of built-in function ‘cos’ [-Wbuiltin-declaration-mismatch]
+make_sequence.c:139:33: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+make_sequence.c:169:33: warning: incompatible implicit declaration of built-in function ‘cos’ [-Wbuiltin-declaration-mismatch]
+  169 |         grid[i].ra=ra3+RA_STEP0/cos(dec*DEG_TO_RAD);
+      |                                 ^~~
+make_sequence.c:169:33: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+make_sequence.c:185:33: warning: incompatible implicit declaration of built-in function ‘cos’ [-Wbuiltin-declaration-mismatch]
+  185 |         grid[i].ra=ra3+RA_STEP0/cos(dec*DEG_TO_RAD);
+      |                                 ^~~
+make_sequence.c:185:33: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+cc  -o make_sequence make_sequence.o ecliptic.o -lm -lc
+cc  -c get_ecliptic.c
+get_ecliptic.c:3:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+    3 | main()
+      | ^~~~
+get_ecliptic.c: In function ‘main’:
+get_ecliptic.c:8:9: warning: implicit declaration of function ‘ecliptic_to_equator’ [-Wimplicit-function-declaration]
+    8 |         ecliptic_to_equator(lon,0.0,&ra,&dec);
+      |         ^~~~~~~~~~~~~~~~~~~
+get_ecliptic.c:11:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   11 |     exit(0);
+      |     ^~~~
+get_ecliptic.c:2:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+    1 | #include <stdio.h>
+  +++ |+#include <stdlib.h>
+    2 | 
+get_ecliptic.c:11:5: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   11 |     exit(0);
+      |     ^~~~
+get_ecliptic.c:11:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+cc  -o get_ecliptic get_ecliptic.o ecliptic.o -lm -lc
+cc  -c galactic.c
+galactic.c:83:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   83 | main()
+      | ^~~~
+galactic.c: In function ‘main’:
+galactic.c:107:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+  107 |         exit(0);
+      |         ^~~~
+galactic.c:11:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+   10 | #include <string.h>
+  +++ |+#include <stdlib.h>
+   11 | 
+galactic.c:107:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+  107 |         exit(0);
+      |         ^~~~
+galactic.c:107:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+cc  -o galactic galactic.o -lm -lc
+cc  -c get_time_gaps.c
+get_time_gaps.c:55:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   55 | main(int argc, char **argv)
+      | ^~~~
+get_time_gaps.c: In function ‘main’:
+get_time_gaps.c:64:8: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   64 |        exit(-1);
+      |        ^~~~
+get_time_gaps.c:10:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+    9 | #include <stdio.h>
+  +++ |+#include <stdlib.h>
+   10 | 
+get_time_gaps.c:64:8: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   64 |        exit(-1);
+      |        ^~~~
+get_time_gaps.c:64:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_gaps.c:76:7: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   76 |       exit(-1);
+      |       ^~~~
+get_time_gaps.c:76:7: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_gaps.c:80:20: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   80 |     field=(Field *)malloc(n_grid_points*sizeof(Field));
+      |                    ^~~~~~
+get_time_gaps.c:80:20: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+get_time_gaps.c:80:20: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+get_time_gaps.c:80:20: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+get_time_gaps.c:83:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   83 |         exit(-1);
+      |         ^~~~
+get_time_gaps.c:83:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_gaps.c:110:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+  110 |         exit(-1);
+      |         ^~~~
+get_time_gaps.c:110:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_gaps.c:122:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+  122 |     free(field);
+      |     ^~~~
+get_time_gaps.c:122:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+get_time_gaps.c:122:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+get_time_gaps.c:122:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+get_time_gaps.c:124:5: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+  124 |     exit(0);
+      |     ^~~~
+get_time_gaps.c:124:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_gaps.c: In function ‘read_fields’:
+get_time_gaps.c:197:12: warning: implicit declaration of function ‘strstr’ [-Wimplicit-function-declaration]
+  197 |         if(strstr(string,"y")!=NULL){
+      |            ^~~~~~
+get_time_gaps.c:10:1: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+    9 | #include <stdio.h>
+  +++ |+#include <string.h>
+   10 | 
+get_time_gaps.c:197:12: warning: incompatible implicit declaration of built-in function ‘strstr’ [-Wbuiltin-declaration-mismatch]
+  197 |         if(strstr(string,"y")!=NULL){
+      |            ^~~~~~
+get_time_gaps.c:197:12: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+cc  -o get_time_gaps get_time_gaps.o -lm -lc
+cc  -c make_sequence1.c
+make_sequence1.c:42:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   42 | main(int argc, char **argv)
+      | ^~~~
+make_sequence1.c: In function ‘main’:
+make_sequence1.c:55:8: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   55 |        exit(-1);
+      |        ^~~~
+make_sequence1.c:15:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+   14 | #include <stdio.h>
+  +++ |+#include <stdlib.h>
+   15 | 
+make_sequence1.c:55:8: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   55 |        exit(-1);
+      |        ^~~~
+make_sequence1.c:55:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence1.c:65:5: warning: implicit declaration of function ‘strcpy’ [-Wimplicit-function-declaration]
+   65 |     strcpy(prev_sequence_file,argv[8]);
+      |     ^~~~~~
+make_sequence1.c:15:1: note: include ‘<string.h>’ or provide a declaration of ‘strcpy’
+   14 | #include <stdio.h>
+  +++ |+#include <string.h>
+   15 | 
+make_sequence1.c:65:5: warning: incompatible implicit declaration of built-in function ‘strcpy’ [-Wbuiltin-declaration-mismatch]
+   65 |     strcpy(prev_sequence_file,argv[8]);
+      |     ^~~~~~
+make_sequence1.c:65:5: note: include ‘<string.h>’ or provide a declaration of ‘strcpy’
+make_sequence1.c:76:23: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   76 |     sequence=(Field *)malloc(MAX_FIELDS*sizeof(Field));
+      |                       ^~~~~~
+make_sequence1.c:76:23: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+make_sequence1.c:76:23: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+make_sequence1.c:76:23: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+make_sequence1.c:79:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   79 |         exit(-1);
+      |         ^~~~
+make_sequence1.c:79:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence1.c:85:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   85 |         exit(-1);
+      |         ^~~~
+make_sequence1.c:85:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence1.c:91:8: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   91 |        exit(-1);
+      |        ^~~~
+make_sequence1.c:91:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence1.c:107:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+  107 |     free(prev_sequence);
+      |     ^~~~
+make_sequence1.c:107:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+make_sequence1.c:107:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+make_sequence1.c:107:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+make_sequence1.c:110:5: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+  110 |     exit(0);
+      |     ^~~~
+make_sequence1.c:110:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_sequence1.c: In function ‘read_sequence’:
+make_sequence1.c:131:10: warning: implicit declaration of function ‘strstr’ [-Wimplicit-function-declaration]
+  131 |       if(strstr(string,"n")==NULL){ /* skip darks */
+      |          ^~~~~~
+make_sequence1.c:131:10: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+make_sequence1.c:131:10: warning: incompatible implicit declaration of built-in function ‘strstr’ [-Wbuiltin-declaration-mismatch]
+make_sequence1.c:131:10: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+make_sequence1.c:134:38: warning: implicit declaration of function ‘cos’ [-Wimplicit-function-declaration]
+  134 |          f->field_width=(FIELD_WIDTH/cos(DEG_TO_RAD*f->dec));
+      |                                      ^~~
+make_sequence1.c:15:1: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+   14 | #include <stdio.h>
+  +++ |+#include <math.h>
+   15 | 
+make_sequence1.c:134:38: warning: incompatible implicit declaration of built-in function ‘cos’ [-Wbuiltin-declaration-mismatch]
+  134 |          f->field_width=(FIELD_WIDTH/cos(DEG_TO_RAD*f->dec));
+      |                                      ^~~
+make_sequence1.c:134:38: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+make_sequence1.c: In function ‘fill_sequence’:
+make_sequence1.c:167:7: warning: implicit declaration of function ‘equator_to_ecliptic’ [-Wimplicit-function-declaration]
+  167 |       equator_to_ecliptic(ra3*15,0.0,&lon,&lat);
+      |       ^~~~~~~~~~~~~~~~~~~
+make_sequence1.c:169:12: warning: implicit declaration of function ‘fabs’ [-Wimplicit-function-declaration]
+  169 |       deca=fabs(dec1-lat);
+      |            ^~~~
+make_sequence1.c:169:12: note: include ‘<math.h>’ or provide a declaration of ‘fabs’
+make_sequence1.c:169:12: warning: incompatible implicit declaration of built-in function ‘fabs’ [-Wbuiltin-declaration-mismatch]
+make_sequence1.c:169:12: note: include ‘<math.h>’ or provide a declaration of ‘fabs’
+make_sequence1.c:189:33: warning: incompatible implicit declaration of built-in function ‘cos’ [-Wbuiltin-declaration-mismatch]
+  189 |            ra_width=FIELD_WIDTH/cos(dec*DEG_TO_RAD);
+      |                                 ^~~
+make_sequence1.c:189:33: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+make_sequence1.c:228:33: warning: incompatible implicit declaration of built-in function ‘cos’ [-Wbuiltin-declaration-mismatch]
+  228 |            ra_width=FIELD_WIDTH/cos(dec*DEG_TO_RAD);
+      |                                 ^~~
+make_sequence1.c:228:33: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+make_sequence1.c:257:33: warning: incompatible implicit declaration of built-in function ‘cos’ [-Wbuiltin-declaration-mismatch]
+  257 |            ra_width=FIELD_WIDTH/cos(dec*DEG_TO_RAD);
+      |                                 ^~~
+make_sequence1.c:257:33: note: include ‘<math.h>’ or provide a declaration of ‘cos’
+make_sequence1.c: In function ‘flag_overlap’:
+make_sequence1.c:300:16: warning: implicit declaration of function ‘check_overlap’ [-Wimplicit-function-declaration]
+  300 |                check_overlap(field+i,prev_field+j,max_overlap)){
+      |                ^~~~~~~~~~~~~
+make_sequence1.c: In function ‘check_overlap’:
+make_sequence1.c:317:10: warning: incompatible implicit declaration of built-in function ‘fabs’ [-Wbuiltin-declaration-mismatch]
+  317 |      dra=fabs(clock_difference(f1->ra,f2->ra));
+      |          ^~~~
+make_sequence1.c:317:10: note: include ‘<math.h>’ or provide a declaration of ‘fabs’
+cc  -o make_sequence1 make_sequence1.o ecliptic.o -lm -lc
+cc  -c scheduler.c
+scheduler.c:79:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   79 | main(int argc, char **argv)
+      | ^~~~
+scheduler.c: In function ‘main’:
+scheduler.c:157:12: warning: implicit declaration of function ‘init_fits_header’; did you mean ‘imprint_fits_header’? [-Wimplicit-function-declaration]
+  157 |         if(init_fits_header(&fits_header)!=0){
+      |            ^~~~~~~~~~~~~~~~
+      |            imprint_fits_header
+scheduler.c:838:31: warning: implicit declaration of function ‘stop_telescope’; did you mean ‘focus_telescope’? [-Wimplicit-function-declaration]
+  838 |                            if(stop_telescope()!=0){
+      |                               ^~~~~~~~~~~~~~
+      |                               focus_telescope
+scheduler.c: At top level:
+scheduler.c:956:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  956 | do_stop(double ut,Telescope_Status *status)
+      | ^~~~~~~
+scheduler.c:1016:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ 1016 | do_stow(double ut,Telescope_Status *status)
+      | ^~~~~~~
+scheduler.c: In function ‘adjust_date’:
+scheduler.c:1376:5: warning: implicit declaration of function ‘caldat’ [-Wimplicit-function-declaration]
+ 1376 |     caldat(jd,date,&dow);
+      |     ^~~~~~
+scheduler.c: In function ‘init_fields’:
+scheduler.c:2791:9: warning: implicit declaration of function ‘galact’ [-Wimplicit-function-declaration]
+ 2791 |         galact(f->ra,f->dec,2000.0,&(f->gal_long),&(f->gal_lat));
+      |         ^~~~~~
+scheduler.c:2792:9: warning: implicit declaration of function ‘eclipt’ [-Wimplicit-function-declaration]
+ 2792 |         eclipt(f->ra,f->dec,2000.0,nt->jd_start,&(f->epoch),&(f->ecl_long),&(f->ecl_lat));
+      |         ^~~~~~
+cc  -c scheduler_telescope.c
+scheduler_telescope.c: In function ‘do_telescope_command’:
+scheduler_telescope.c:788:9: warning: implicit declaration of function ‘send_command’ [-Wimplicit-function-declaration]
+  788 |      if(send_command(command,reply,MACHINE_NAME,COMMAND_PORT,timeout)!=0){
+      |         ^~~~~~~~~~~~
+cc  -c scheduler_camera.c
+scheduler_camera.c: In function ‘take_exposure’:
+scheduler_camera.c:115:8: warning: implicit declaration of function ‘update_fits_header’; did you mean ‘imprint_fits_header’? [-Wimplicit-function-declaration]
+  115 |     if(update_fits_header(header,SEQUENCE_KEYWORD,string)<0){
+      |        ^~~~~~~~~~~~~~~~~~
+      |        imprint_fits_header
+scheduler_camera.c: In function ‘do_camera_command’:
+scheduler_camera.c:387:9: warning: implicit declaration of function ‘send_command’ [-Wimplicit-function-declaration]
+  387 |      if(send_command(command,reply,MACHINE_NAME,COMMAND_PORT, timeout_sec)!=0){
+      |         ^~~~~~~~~~~~
+cc  -c socket.c
+cc  -c scheduler_fits.c
+cc  -c scheduler_corrections.c
+cc  -c scheduler_signals.c
+cc  -o scheduler scheduler.o scheduler_telescope.o scheduler_camera.o socket.o sky_utils.o ecliptic.o scheduler_fits.o scheduler_corrections.o scheduler_signals.o  -lm -lc
+cc  -c time_stamp.c
+time_stamp.c:17:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   17 | main()
+      | ^~~~
+time_stamp.c: In function ‘main’:
+time_stamp.c:27:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   27 |     exit(0);
+      |     ^~~~
+time_stamp.c:11:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+   10 | #include <time.h>
+  +++ |+#include <stdlib.h>
+   11 | 
+time_stamp.c:27:5: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   27 |     exit(0);
+      |     ^~~~
+time_stamp.c:27:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+cc  -o time_stamp time_stamp.o -lm -lc
+cc  -c sequencer.c
+sequencer.c:44:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   44 | main(int argc, char **argv)
+      | ^~~~
+sequencer.c: In function ‘main’:
+sequencer.c:104:12: warning: implicit declaration of function ‘init_fits_header’; did you mean ‘imprint_fits_header’? [-Wimplicit-function-declaration]
+  104 |         if(init_fits_header(&fits_header)!=0){
+      |            ^~~~~~~~~~~~~~~~
+      |            imprint_fits_header
+sequencer.c: At top level:
+sequencer.c:501:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  501 | do_stop(double ut,Telescope_Status *status)
+      | ^~~~~~~
+sequencer.c:517:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  517 | do_stow(double ut,Telescope_Status *status)
+      | ^~~~~~~
+sequencer.c: In function ‘adjust_date’:
+sequencer.c:677:5: warning: implicit declaration of function ‘caldat’ [-Wimplicit-function-declaration]
+  677 |     caldat(jd,date,&dow);
+      |     ^~~~~~
+sequencer.c: In function ‘init_fields’:
+sequencer.c:1539:9: warning: implicit declaration of function ‘galact’ [-Wimplicit-function-declaration]
+ 1539 |         galact(f->ra,f->dec,2000.0,&(f->gal_long),&(f->gal_lat));
+      |         ^~~~~~
+sequencer.c:1540:9: warning: implicit declaration of function ‘eclipt’ [-Wimplicit-function-declaration]
+ 1540 |         eclipt(f->ra,f->dec,2000.0,nt->jd_start,&(f->epoch),&(f->ecl_long),&(f->ecl_lat));
+      |         ^~~~~~
+cc  -o sequencer sequencer.o scheduler_telescope.o scheduler_camera.o socket.o sky_utils.o ecliptic.o scheduler_fits.o scheduler_corrections.o scheduler_signals.o -lm -lc
+cc  -c get_airmass.c
+get_airmass.c:11:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   11 | main(int argc, char **argv)
+      | ^~~~
+cc  -o get_airmass get_airmass.o sky_utils.o -lm -lc
+cc  -c make_histogram.c
+make_histogram.c:12:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   12 | main(argc,argv)
+      | ^~~~
+make_histogram.c: In function ‘main’:
+make_histogram.c:24:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   24 |         exit(-1);
+      |         ^~~~
+make_histogram.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+    5 | #include <math.h>
+  +++ |+#include <stdlib.h>
+    6 | #define MAX_BINS 1000
+make_histogram.c:24:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   24 |         exit(-1);
+      |         ^~~~
+make_histogram.c:24:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_histogram.c:36:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   36 |         exit(0);
+      |         ^~~~
+make_histogram.c:36:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_histogram.c:42:9: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   42 |         exit(-1);
+      |         ^~~~
+make_histogram.c:42:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_histogram.c:57:17: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   57 |                 exit(-1);
+      |                 ^~~~
+make_histogram.c:57:17: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+make_histogram.c:85:5: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   85 |     exit(0);
+      |     ^~~~
+make_histogram.c:85:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+cc  -o make_histogram make_histogram.o -lm
+cc  -c get_time_history.c
+get_time_history.c:21:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   21 | main(int argc, char **argv)
+      | ^~~~
+get_time_history.c: In function ‘main’:
+get_time_history.c:33:7: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   33 |       exit(-1);
+      |       ^~~~
+get_time_history.c:10:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+    9 | #include <string.h>
+  +++ |+#include <stdlib.h>
+   10 | 
+get_time_history.c:33:7: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   33 |       exit(-1);
+      |       ^~~~
+get_time_history.c:33:7: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_history.c:40:8: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   40 |        exit(-1);
+      |        ^~~~
+get_time_history.c:40:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_history.c:43:15: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   43 |    f=(Field *)malloc(MAX_FIELDS*sizeof(Field));
+      |               ^~~~~~
+get_time_history.c:43:15: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+get_time_history.c:43:15: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+get_time_history.c:43:15: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+get_time_history.c:46:7: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   46 |       exit(-1);
+      |       ^~~~
+get_time_history.c:46:7: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_history.c:78:12: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+   78 |            exit(-1);
+      |            ^~~~
+get_time_history.c:78:12: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_history.c:120:23: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+  120 |                       exit(-1);
+      |                       ^~~~
+get_time_history.c:120:23: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+get_time_history.c:138:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+  138 |     free(f);
+      |     ^~~~
+get_time_history.c:138:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+get_time_history.c:138:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+get_time_history.c:138:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+get_time_history.c:140:5: warning: incompatible implicit declaration of built-in function ‘exit’ [-Wbuiltin-declaration-mismatch]
+  140 |     exit(0);
+      |     ^~~~
+get_time_history.c:140:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+cc  -o get_time_history get_time_history.o -lm -lc
+cp survey_sim make_sequence get_ecliptic galactic get_time_gaps make_sequence1 scheduler  time_stamp sequencer get_airmass make_histogram get_time_history  ../../bin
